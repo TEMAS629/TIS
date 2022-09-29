@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<div></div>
+		<button id="btn1">click me</button>
+		<button id="btn2">click me</button>
+		<button id="btn3">click me</button>
+	</body>
+    <script>
+        let div = document.querySelector('div');
+		btn1.addEventListener('click', function() {
+			fetch('/pages/p1.html').then(
+				response => {
+					return response.text(); // выведет Promise
+				}
+			).then(
+				text => {
+					div.innerHTML = text;
+				}
+			)
+		});
+		btn2.addEventListener('click', function() {
+			fetch('/pages/p2.html').then(
+				response => {
+					return response.text(); // выведет Promise
+				}
+			).then(
+				text => {
+					div.innerHTML = text;
+				}
+			)
+		});
+		btn3.addEventListener('click', function() {
+			fetch('/pages/p3.html').then(
+				response => {
+					return response.text(); // выведет Promise
+				}
+			).then(
+				text => {
+					div.innerHTML = text;
+				}
+			)
+		});
+    </script>
+</html>

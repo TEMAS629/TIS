@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<form action="" method="GET">
+			<input name="num1">
+			<input name="num2">
+			<input name="num3">
+			<input type="submit">
+		</form>
+		<p id = "pole"></p>
+	</body>
+    <script>
+		let form = document.querySelector('form');
+		let input1 = document.querySelector('[name="num1"]');
+		let input2 = document.querySelector('[name="num2"]');
+		let input3 = document.querySelector('[name="num3"]');
+		form.addEventListener('submit', function(event) {
+			let searchParams = new URLSearchParams();
+			
+			searchParams.set('num1', input1.value);
+			searchParams.set('num2', input2.value);
+			searchParams.set('num3', input3.value);
+			
+			let path = '/handler/?' + searchParams.toString();
+			
+			fetch(path).then(
+				response => {
+					return response.text();
+				}
+			).then(
+				text => {
+					pole.innerHTML = text; // ответ сервера
+				}
+			);
+			
+			event.preventDefault();
+		});
+    </script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<form action="" method="POST">
+			<input name="num1">
+			<input name="num2">
+			<input name="num3">
+			<input name="num4">
+			<input name="num5">
+			<input type="submit">
+		</form>
+		<p id = "pole"></p>
+	</body>
+    <script>
+		let form = document.querySelector('form');
+		form.addEventListener('submit', function(event) {
+			let promise = fetch('/handler/', {
+				method: 'POST',
+				body: new FormData(this),
+			}).then(
+				response => {
+					return response.text(); // ответ сервера
+				}
+			).then(
+				text => {
+					pole.innerHTML = text;
+				}
+			);
+			
+			event.preventDefault();
+		});
+    </script>
+</html>

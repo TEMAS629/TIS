@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<div></div>
+		<button id="btn1">click me</button>
+	</body>
+    <script>
+        let div = document.querySelector('div');
+		let i = 0;
+		let arr = ["/pages/p1.html", "/pages/p2.html", "/pages/p3.html", "/pages/p4.html", "/pages/p5.html"]
+		btn1.addEventListener('click', function() {
+			let path = arr[i];
+			fetch(path).then(
+				response => {
+					return response.text(); // выведет Promise
+				}
+			).then(
+				text => {
+					div.innerHTML = text;
+				}
+			)
+			i++;
+			if (i > 4){i=0}
+		});
+    </script>
+</html>
